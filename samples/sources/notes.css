@@ -1,0 +1,165 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  color: #1E2430;
+  font-size: 12.5px;
+}
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 12mm 13mm 14mm;
+  position: relative;
+  page-break-after: always;
+  overflow: hidden;
+}
+.page:last-child { page-break-after: auto; }
+
+/* ---------- cover ---------- */
+.cover {
+  background: linear-gradient(160deg, #FFF7E8 0%, #FFEFD6 45%, #FDE4C8 100%);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; position: relative;
+}
+.cover::before, .cover::after {
+  content: ""; position: absolute; border-radius: 50%;
+}
+.cover::before { width: 260px; height: 260px; background: rgba(232,163,61,.18); top: -80px; left: -80px; }
+.cover::after { width: 200px; height: 200px; background: rgba(199,131,30,.14); bottom: -60px; right: -60px; }
+.cover .tag {
+  font-family: 'Kalam', cursive; font-weight: 700; font-size: 15px; letter-spacing: 2px;
+  color: #C7831E; text-transform: uppercase; margin-bottom: 18px;
+}
+.cover h1 {
+  font-family: 'Caveat', cursive; font-weight: 700; font-size: 74px; line-height: 1.05;
+  color: #0E1A38; margin: 0 0 6px; text-shadow: 2px 2px 0 rgba(232,163,61,.35);
+}
+.cover .sub {
+  font-family: 'Kalam', cursive; font-size: 22px; color: #4A5B7E; margin-bottom: 30px;
+}
+.cover .chapter-badge {
+  background: #0E1A38; color: #FCF2E0; font-family: 'Kalam', cursive; font-weight: 700;
+  font-size: 16px; padding: 10px 26px; border-radius: 40px; margin-bottom: 40px;
+  box-shadow: 0 10px 26px -12px rgba(14,26,56,.5);
+}
+.cover .topics { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 480px; }
+.cover .topics span {
+  font-family: 'Patrick Hand', cursive; font-size: 14px; background: #fff; color: #0E1A38;
+  border: 2px solid #E8A33D; border-radius: 30px; padding: 6px 16px;
+  transform: rotate(var(--r, -1deg));
+}
+.cover .footer-note {
+  position: absolute; bottom: 26px; font-family: 'Kalam', cursive; font-size: 12px; color: #A87A2E;
+}
+
+/* ---------- running header ---------- */
+.hdr {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  font-family: 'Kalam', cursive; font-size: 10.5px; color: #A0873F;
+  border-bottom: 2px dashed #E8CB98; padding-bottom: 6px; margin-bottom: 14px;
+}
+.hdr .right { display: flex; align-items: center; gap: 9px; flex: none; }
+.hdr .right > span:first-child { white-space: nowrap; }
+.hdr b { color: #0E1A38; }
+
+/* ---------- section titles ---------- */
+.stitle {
+  font-family: 'Caveat', cursive; font-weight: 700; font-size: 34px; color: #0E1A38;
+  display: flex; align-items: center; gap: 10px; margin: 0 0 4px;
+}
+.stitle .num {
+  background: #E8A33D; color: #fff; font-family: 'Kalam', cursive; font-weight: 700;
+  font-size: 15px; width: 30px; height: 30px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+}
+.sdesc { font-family: 'Patrick Hand', cursive; font-size: 13.5px; color: #6B7A9B; margin: 0 0 14px 40px; }
+
+/* ---------- highlight box ---------- */
+.hl {
+  background: #FFF7E8; border: 2px solid #F0CF95; border-radius: 12px;
+  padding: 12px 15px; margin: 10px 0; position: relative;
+}
+.hl.key { border-color: #2C6B52; background: #EFF7F2; }
+.hl.warn { border-color: #C1503F; background: #FBEFEC; }
+.hl-tag {
+  position: absolute; top: -11px; left: 14px; background: #E8A33D; color: #fff;
+  font-family: 'Kalam', cursive; font-weight: 700; font-size: 10.5px;
+  padding: 2px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: .5px;
+}
+.hl.key .hl-tag { background: #2C6B52; }
+.hl.warn .hl-tag { background: #C1503F; }
+.hl p { margin: 4px 0 0; font-size: 12px; line-height: 1.55; }
+.hl p:first-child { margin-top: 2px; }
+
+/* ---------- doodle / marker heading ---------- */
+.marker {
+  font-family: 'Caveat', cursive; font-weight: 700; font-size: 21px; color: #0E1A38;
+  display: inline-block; position: relative; margin: 14px 0 8px;
+}
+.marker::after {
+  content: ""; position: absolute; left: -4px; right: -4px; bottom: 1px; height: 9px;
+  background: #F5D8A0; z-index: -1; opacity: .8;
+}
+
+/* ---------- two-column ---------- */
+.cols { display: flex; gap: 16px; }
+.cols > div { flex: 1; }
+
+/* ---------- diagram frame ---------- */
+.diagram {
+  background: #fff; border: 2px solid #DCE2F0; border-radius: 14px;
+  padding: 12px; text-align: center; margin: 10px 0;
+}
+.diagram .cap { font-family: 'Kalam', cursive; font-size: 11.5px; color: #6B7A9B; margin-top: 6px; }
+
+/* ---------- pill list ---------- */
+.pills { display: flex; flex-wrap: wrap; gap: 7px; margin: 8px 0; }
+.pill {
+  font-family: 'Kalam', cursive; font-size: 11px; background: #0E1A38; color: #FCF2E0;
+  padding: 5px 13px; border-radius: 20px;
+}
+.pill.gold { background: #E8A33D; color: #1E2430; }
+.pill.green { background: #2C6B52; color: #fff; }
+
+/* ---------- flow chain ---------- */
+.chain { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.chain .node {
+  font-family: 'Patrick Hand', cursive; font-size: 12.5px; background: #F6F7FB; border: 1.5px solid #C9D3E8;
+  border-radius: 9px; padding: 7px 12px; text-align: center;
+}
+.chain .arrow { font-size: 16px; color: #E8A33D; font-weight: bold; }
+
+/* ---------- table ---------- */
+table.notes-tbl { width: 100%; border-collapse: collapse; margin: 10px 0; font-family: 'Patrick Hand', cursive; font-size: 12px; }
+table.notes-tbl th {
+  background: #0E1A38; color: #fff; text-align: left; padding: 7px 10px; font-family: 'Kalam', cursive; font-size: 11.5px;
+}
+table.notes-tbl td { padding: 6px 10px; border-bottom: 1px solid #E4E8F2; }
+table.notes-tbl tr:nth-child(even) td { background: #FAFBFE; }
+
+/* ---------- mnemonic / recall strip ---------- */
+.recall {
+  background: #0E1A38; color: #FCF2E0; border-radius: 12px; padding: 12px 16px; margin-top: 12px;
+}
+.recall .rt { font-family: 'Kalam', cursive; font-weight: 700; font-size: 12px; color: #E8A33D; text-transform: uppercase; letter-spacing: 1px; }
+.recall p { font-family: 'Caveat', cursive; font-size: 19px; margin: 4px 0 0; line-height: 1.3; }
+
+/* ---------- footer ---------- */
+.pf {
+  position: absolute; bottom: 8mm; left: 13mm; right: 13mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Kalam', cursive; font-size: 9.5px; color: #A9B2C7;
+  border-top: 1px dashed #DDE3F0; padding-top: 5px;
+}
+.pf b { color: #E8A33D; }
+
+/* ---------- watermark demo strip ---------- */
+.sampletag {
+  background: #E8A33D; color: #1E2430; font-family: 'Kalam', cursive; font-weight: 700;
+  font-size: 9px; padding: 2px 10px; border-radius: 20px; letter-spacing: 1.2px;
+  white-space: nowrap;
+}
