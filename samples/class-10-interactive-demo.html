@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Class 10 Physics: Reflection of Light | NammaTutor</title>
+<meta name="description" content="Free interactive demo: CBSE Class 10 Reflection of Light. Drag the sliders to see the laws of reflection and mirror ray diagrams build themselves live.">
+<link rel="canonical" href="https://nammatutor.in/samples/class-10-interactive-demo.html">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/brand/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<style>
+  html[data-theme="dark"] {
+    --ink:#EAEEF9; --ink-2:#D6DDEE; --slate:#A6B2CC; --slate-2:#8894B2;
+    --paper:#0C1526; --paper-2:#121D33; --shell:#182440;
+    --line:rgba(255,255,255,.14); --line-soft:rgba(255,255,255,.08);
+  }
+  html[data-theme="dark"] body { background:#0C1526; }
+  html[data-theme="dark"] .site-header { background:rgba(12,21,38,.9); }
+  html[data-theme="dark"] .widget { background:#121D33; }
+  html[data-theme="dark"] .rail { background:#1B2C55; }
+
+  .demo-bar {
+    display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between;
+    background:var(--marigold-w); border:1px solid rgba(232,163,61,.5);
+    border-radius:var(--r-md); padding:1rem 1.3rem; margin-top:1.6rem;
+  }
+  html[data-theme="dark"] .demo-bar { background:rgba(232,163,61,.1); }
+  .demo-bar p { margin:0; font-size:.9rem; color:var(--ink); }
+  .theme-btn { background:none; border:1px solid var(--line); color:var(--ink); border-radius:var(--r-sm); padding:.45rem .8rem; font-size:.8rem; cursor:pointer; }
+
+  .widget { background:var(--paper-2); border:1px solid var(--line); border-radius:var(--r-md); padding:1.5rem; margin-bottom:1.4rem; }
+  .widget h3 { margin-bottom:.2rem; }
+  .widget .wsub { font-size:.87rem; color:var(--slate); margin-bottom:1rem; }
+  .stage { background:#F3F6FC; border-radius:10px; overflow:hidden; }
+  html[data-theme="dark"] .stage { background:#0A1120; }
+  .controls { display:flex; flex-wrap:wrap; gap:1.2rem; align-items:center; margin-top:1rem; }
+  .control { flex:1; min-width:200px; }
+  .control label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; margin-bottom:.4rem; }
+  .control label .val { font-family:var(--mono); color:var(--marigold-2); }
+  input[type="range"] { width:100%; accent-color:#E8A33D; }
+  .readout {
+    display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem;
+  }
+  .readout .tag {
+    font-family:var(--mono); font-size:.76rem; padding:.4rem .8rem; border-radius:20px;
+    background:var(--shell); color:var(--ink); border:1px solid var(--line);
+  }
+  .readout .tag.hi { background:#0E1A38; color:#FCF2E0; border-color:#0E1A38; }
+  .readout .tag.real { background:#2C6B52; color:#fff; border-color:#2C6B52; }
+  .readout .tag.virtual { background:#7C6AF7; color:#fff; border-color:#7C6AF7; }
+
+  .lawgrid { display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem; margin:1rem 0; }
+  .lawcard { background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:1rem 1.1rem; }
+  .lawcard b { display:block; font-family:var(--display); font-size:1.02rem; margin-bottom:.3rem; }
+  .lawcard p { margin:0; font-size:.87rem; color:var(--slate); }
+
+  .usegrid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+  .usecard { background:var(--paper-2); border:1px solid var(--line); border-radius:10px; padding:1.1rem 1.2rem; }
+  .usecard h4 { font-family:var(--display); font-size:1.1rem; margin-bottom:.5rem; }
+  .usecard ul { margin:0; padding-left:1.1rem; font-size:.87rem; color:var(--slate); }
+  .usecard li { margin-bottom:.3rem; }
+
+  .quiz-q { border-top:1px solid var(--line); padding:1.4rem 0; }
+  .quiz-q:first-of-type { border-top:0; }
+  .quiz-q p.q { font-weight:600; margin-bottom:.85rem; font-size:.98rem; }
+  .opts2 { display:grid; gap:.5rem; }
+  .opt2 { display:flex; gap:.7rem; align-items:flex-start; padding:.65rem .9rem; border:1px solid var(--line); border-radius:var(--r-sm); cursor:pointer; font-size:.93rem; transition:.15s; background:var(--paper); }
+  .opt2:hover { border-color:var(--ink-2); }
+  .opt2 input { accent-color:var(--ink); margin-top:.2rem; }
+  .opt2.correct { border-color:var(--verified); background:rgba(44,107,82,.09); }
+  .opt2.wrong { border-color:#B5443A; background:rgba(181,68,58,.09); }
+  .score { font-family:var(--display); font-size:1.5rem; margin-top:1.4rem; }
+  .score small { display:block; font-family:var(--body); font-size:.9rem; color:var(--slate); margin-top:.4rem; }
+
+  @media (max-width:760px) {
+    .lawgrid, .usegrid { grid-template-columns:1fr; }
+    .stage svg { width:100%; height:auto; }
+  }
+</style>
+<meta name="theme-color" content="#01224B">
+<script>(function(){try{var t=localStorage.getItem('nt-theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand__mark"><img src="../assets/brand/logo-mark.png" alt="NammaTutor logo" width="31" height="38"></span>
+      <span><span class="brand__name">Namma<b>Tutor</b></span><span class="brand__tag">Interactive notes</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../resources.html">Study material</a>
+      <a href="class-12-interactive-demo.html">Class 12 demo</a>
+      <a href="../hire-a-tutor.html">Find a tutor</a>
+    </nav>
+    <div class="header-cta">
+      <button class="theme-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <svg class="moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        <span class="theme-btn__label">Dark</span>
+      </button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="../index.html">Home</a> / <a href="../resources.html">Study material</a> / Class 10 demo</p>
+    <p class="eyebrow">CBSE Class 10 · Physics · Chapter 6</p>
+    <h1 style="font-size:clamp(2rem,4.4vw,3rem)">Reflection of Light</h1>
+    <p class="lede" style="margin-top:1rem">Drag every slider below. The ray diagrams are live — they are not illustrations, they are calculated from the mirror formula as you move the object.</p>
+    <div class="demo-bar">
+      <p><b>This is a free sample.</b> The full set covers refraction, lenses and the human eye with the same live-diagram treatment.</p>
+      <a class="btn btn--wa" data-wa="Hi NammaTutor, I saw the Class 10 Reflection of Light demo. Please send pricing.">Get the full set</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width:880px">
+
+    <!-- ============ WIDGET 1 — LAW OF REFLECTION ============ -->
+    <div class="widget">
+      <h3>1 · The Law of Reflection</h3>
+      <p class="wsub">Move the slider — watch the angle of reflection copy the angle of incidence, exactly, every time.</p>
+      <div class="stage">
+        <svg id="lawSvg" viewBox="0 0 640 300" width="100%" height="300"></svg>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label>Angle of incidence <span class="val" id="lawAngleVal">40°</span></label>
+          <input type="range" id="lawAngle" min="5" max="80" value="40" step="1">
+        </div>
+      </div>
+      <div class="readout">
+        <span class="tag hi" id="lawI">∠i = 40°</span>
+        <span class="tag hi" id="lawR">∠r = 40°</span>
+        <span class="tag">Both rays lie in the same plane as the normal</span>
+      </div>
+    </div>
+
+    <div class="lawgrid">
+      <div class="lawcard"><b>First law</b><p>The incident ray, the reflected ray and the normal at the point of incidence all lie in the same plane.</p></div>
+      <div class="lawcard"><b>Second law</b><p>The angle of incidence always equals the angle of reflection — both measured from the normal, never from the mirror surface.</p></div>
+    </div>
+
+    <!-- ============ WIDGET 2 — CONCAVE MIRROR ============ -->
+    <div class="widget">
+      <h3>2 · Concave Mirror — Ray Diagram</h3>
+      <p class="wsub">Slide the object further from or closer to the mirror. Watch the image flip from real to virtual as the object crosses the focus F.</p>
+      <div class="stage">
+        <svg id="concaveSvg" viewBox="0 0 640 300" width="100%" height="300"></svg>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label>Object distance from pole <span class="val" id="concaveUVal">220 px</span></label>
+          <input type="range" id="concaveU" min="30" max="280" value="220" step="2">
+        </div>
+      </div>
+      <div class="readout" id="concaveReadout"></div>
+    </div>
+
+    <div class="hl-plain" style="font-size:.87rem; color:var(--slate); background:var(--shell); border-radius:10px; padding:.9rem 1.1rem; margin:-.4rem 0 1.4rem">
+      <b style="color:var(--ink)">Quick recall — five zones, five images.</b> Beyond C: real, inverted, diminished. At C: real, inverted, same size. Between C &amp; F: real, inverted, magnified. At F: image at infinity. Between F &amp; P: virtual, erect, magnified.
+    </div>
+
+    <!-- ============ WIDGET 3 — CONVEX MIRROR ============ -->
+    <div class="widget">
+      <h3>3 · Convex Mirror — Always the Same Outcome</h3>
+      <p class="wsub">However far the object moves, a convex mirror gives the same kind of image. Slide it and check.</p>
+      <div class="stage">
+        <svg id="convexSvg" viewBox="0 0 640 260" width="100%" height="260"></svg>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label>Object distance from pole <span class="val" id="convexUVal">220 px</span></label>
+          <input type="range" id="convexU" min="30" max="280" value="220" step="2">
+        </div>
+      </div>
+      <div class="readout">
+        <span class="tag virtual">Virtual</span>
+        <span class="tag hi">Erect</span>
+        <span class="tag hi">Diminished</span>
+        <span class="tag">Forms behind the mirror, between P and F — always</span>
+      </div>
+    </div>
+
+    <div class="marker" style="font-family:var(--display); font-weight:600; font-size:1.15rem; margin:1.6rem 0 .8rem">Where each mirror is actually used</div>
+    <div class="usegrid">
+      <div class="usecard">
+        <h4>Concave mirror</h4>
+        <ul>
+          <li>Shaving / makeup mirrors — object held within F, gives a magnified erect image</li>
+          <li>Torches, headlights, solar cookers — bulb placed at F sends out a parallel beam</li>
+          <li>Dentist's mirror — small concave mirror held close to a tooth</li>
+        </ul>
+      </div>
+      <div class="usecard">
+        <h4>Convex mirror</h4>
+        <ul>
+          <li>Vehicle rear-view mirrors — diminished image means a wider field of view</li>
+          <li>Security mirrors in shops — one mirror covers a whole aisle</li>
+          <li>Street-light reflectors — spreads light over a larger area</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ QUIZ ============ -->
+    <div class="card" style="padding:1.7rem; margin-top:2rem">
+      <h2 style="font-size:1.4rem; margin-bottom:.3rem">Chapter quiz</h2>
+      <p style="color:var(--slate); font-size:.92rem">Five questions on what you just watched move.</p>
+      <div id="quiz" style="margin-top:1.4rem"></div>
+      <button class="btn btn--gold btn--block" id="check" style="margin-top:1.4rem">Check my answers</button>
+      <div id="result" class="score" hidden></div>
+    </div>
+
+    <div class="card" style="padding:1.8rem; margin-top:2rem; text-align:center">
+      <h3 style="margin-bottom:.5rem">Want this for refraction and lenses too?</h3>
+      <p style="color:var(--slate); font-size:.94rem; margin-bottom:1.2rem">Same live-diagram treatment for the rest of the Light chapter, plus the Human Eye.</p>
+      <a class="btn btn--wa btn--lg" data-wa="Hi NammaTutor, please send pricing for the full Class 10 Physics interactive notes.">Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="margin-top:0; border-top:0; padding-top:0">
+      <span>© <span data-year></span> NammaTutor · Sample material</span>
+      <span><a href="../resources.html">All study material</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/ui.js"></script>
+<script src="../assets/js/demo-reflection.js"></script>
+</body>
+</html>

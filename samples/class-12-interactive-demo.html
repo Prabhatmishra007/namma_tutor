@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Class 12 Physics: Current Electricity | NammaTutor</title>
+<meta name="description" content="Free interactive demo: CBSE Class 12 Current Electricity. Drag the sliders to see Ohm's law, series/parallel and resistivity update live on screen.">
+<link rel="canonical" href="https://nammatutor.in/samples/class-12-interactive-demo.html">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/brand/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<style>
+  html[data-theme="dark"] {
+    --ink:#EAEEF9; --ink-2:#D6DDEE; --slate:#A6B2CC; --slate-2:#8894B2;
+    --paper:#0C1526; --paper-2:#121D33; --shell:#182440;
+    --line:rgba(255,255,255,.14); --line-soft:rgba(255,255,255,.08);
+  }
+  html[data-theme="dark"] body { background:#0C1526; }
+  html[data-theme="dark"] .site-header { background:rgba(12,21,38,.9); }
+  html[data-theme="dark"] .widget { background:#121D33; }
+
+  .demo-bar {
+    display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between;
+    background:var(--marigold-w); border:1px solid rgba(232,163,61,.5);
+    border-radius:var(--r-md); padding:1rem 1.3rem; margin-top:1.6rem;
+  }
+  html[data-theme="dark"] .demo-bar { background:rgba(232,163,61,.1); }
+  .demo-bar p { margin:0; font-size:.9rem; color:var(--ink); }
+  .theme-btn { background:none; border:1px solid var(--line); color:var(--ink); border-radius:var(--r-sm); padding:.45rem .8rem; font-size:.8rem; cursor:pointer; }
+
+  .widget { background:var(--paper-2); border:1px solid var(--line); border-radius:var(--r-md); padding:1.5rem; margin-bottom:1.4rem; }
+  .widget h3 { margin-bottom:.2rem; }
+  .widget .wsub { font-size:.87rem; color:var(--slate); margin-bottom:1rem; }
+  .stage { background:#F3F6FC; border-radius:10px; overflow:hidden; }
+  html[data-theme="dark"] .stage { background:#0A1120; }
+  .controls { display:flex; flex-wrap:wrap; gap:1.2rem; align-items:center; margin-top:1rem; }
+  .control { flex:1; min-width:180px; }
+  .control label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; margin-bottom:.4rem; }
+  .control label .val { font-family:var(--mono); color:var(--marigold-2); }
+  input[type="range"] { width:100%; accent-color:#E8A33D; }
+  .readout { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem; }
+  .readout .tag { font-family:var(--mono); font-size:.76rem; padding:.4rem .8rem; border-radius:20px; background:var(--shell); color:var(--ink); border:1px solid var(--line); }
+  .readout .tag.hi { background:#0E1A38; color:#FCF2E0; border-color:#0E1A38; }
+  .readout .tag.warm { background:#C1503F; color:#fff; border-color:#C1503F; }
+
+  .lawgrid { display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem; margin:1rem 0; }
+  .lawcard { background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:1rem 1.1rem; }
+  .lawcard b { display:block; font-family:var(--display); font-size:1.02rem; margin-bottom:.3rem; }
+  .lawcard p { margin:0; font-size:.87rem; color:var(--slate); }
+
+  .usegrid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+  .usecard { background:var(--paper-2); border:1px solid var(--line); border-radius:10px; padding:1.1rem 1.2rem; }
+  .usecard h4 { font-family:var(--display); font-size:1.1rem; margin-bottom:.5rem; }
+  .usecard ul { margin:0; padding-left:1.1rem; font-size:.87rem; color:var(--slate); }
+  .usecard li { margin-bottom:.3rem; }
+
+  .quiz-q { border-top:1px solid var(--line); padding:1.4rem 0; }
+  .quiz-q:first-of-type { border-top:0; }
+  .quiz-q p.q { font-weight:600; margin-bottom:.85rem; font-size:.98rem; }
+  .opts2 { display:grid; gap:.5rem; }
+  .opt2 { display:flex; gap:.7rem; align-items:flex-start; padding:.65rem .9rem; border:1px solid var(--line); border-radius:var(--r-sm); cursor:pointer; font-size:.93rem; transition:.15s; background:var(--paper); }
+  .opt2:hover { border-color:var(--ink-2); }
+  .opt2 input { accent-color:var(--ink); margin-top:.2rem; }
+  .opt2.correct { border-color:var(--verified); background:rgba(44,107,82,.09); }
+  .opt2.wrong { border-color:#B5443A; background:rgba(181,68,58,.09); }
+  .score { font-family:var(--display); font-size:1.5rem; margin-top:1.4rem; }
+  .score small { display:block; font-family:var(--body); font-size:.9rem; color:var(--slate); margin-top:.4rem; }
+
+  @media (max-width:760px) {
+    .lawgrid, .usegrid { grid-template-columns:1fr; }
+  }
+</style>
+<meta name="theme-color" content="#01224B">
+<script>(function(){try{var t=localStorage.getItem('nt-theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand__mark"><img src="../assets/brand/logo-mark.png" alt="NammaTutor logo" width="31" height="38"></span>
+      <span><span class="brand__name">Namma<b>Tutor</b></span><span class="brand__tag">Interactive notes</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../resources.html">Study material</a>
+      <a href="class-10-interactive-demo.html">Class 10 demo</a>
+      <a href="../hire-a-tutor.html">Find a tutor</a>
+    </nav>
+    <div class="header-cta">
+      <button class="theme-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <svg class="moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        <span class="theme-btn__label">Dark</span>
+      </button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="../index.html">Home</a> / <a href="../resources.html">Study material</a> / Class 12 demo</p>
+    <p class="eyebrow">CBSE Class 12 · Physics · Chapter 3</p>
+    <h1 style="font-size:clamp(2rem,4.4vw,3rem)">Current Electricity</h1>
+    <p class="lede" style="margin-top:1rem">Ohm's law, series versus parallel, and resistivity — dragged, not just read. Every number below recalculates as you move the sliders.</p>
+    <div class="demo-bar">
+      <p><b>This is a free sample.</b> The full set covers EMF, internal resistance, Kirchhoff's laws and the Wheatstone bridge with the same live-widget treatment.</p>
+      <a class="btn btn--wa" data-wa="Hi NammaTutor, I saw the Class 12 Electricity demo. Please send pricing.">Get the full set</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width:880px">
+
+    <!-- ============ WIDGET 1 — OHM'S LAW ============ -->
+    <div class="widget">
+      <h3>1 · Ohm's Law</h3>
+      <p class="wsub">Set the voltage and resistance. The circuit, the current reading and the V–I line all update together.</p>
+      <div class="stage">
+        <svg id="ohmSvg" viewBox="0 0 640 260" width="100%" height="260"></svg>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label>Voltage (V) <span class="val" id="ohmVVal">6 V</span></label>
+          <input type="range" id="ohmV" min="1" max="12" value="6" step="0.5">
+        </div>
+        <div class="control">
+          <label>Resistance (R) <span class="val" id="ohmRVal">4 Ω</span></label>
+          <input type="range" id="ohmR" min="1" max="12" value="4" step="0.5">
+        </div>
+      </div>
+      <div class="readout" id="ohmReadout"></div>
+    </div>
+
+    <div class="hl-plain" style="font-size:.87rem; color:var(--slate); background:var(--shell); border-radius:10px; padding:.9rem 1.1rem; margin:-.4rem 0 1.4rem">
+      <b style="color:var(--ink)">Ohm's law:</b> V = IR, provided temperature and physical conditions stay constant. The V–I graph of a resistor obeying Ohm's law is always a straight line through the origin — its slope is the resistance.
+    </div>
+
+    <!-- ============ WIDGET 2 — SERIES vs PARALLEL ============ -->
+    <div class="widget">
+      <h3>2 · Series vs Parallel</h3>
+      <p class="wsub">Same two resistors, same 12 V supply — two very different outcomes. Move R1 and R2 and compare the equivalent resistance on each side.</p>
+      <div class="stage">
+        <svg id="spSvg" viewBox="0 0 640 380" width="100%" height="380"></svg>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label>R1 <span class="val" id="r1Val">4 Ω</span></label>
+          <input type="range" id="r1" min="1" max="10" value="4" step="0.5">
+        </div>
+        <div class="control">
+          <label>R2 <span class="val" id="r2Val">6 Ω</span></label>
+          <input type="range" id="r2" min="1" max="10" value="6" step="0.5">
+        </div>
+      </div>
+      <div class="readout" id="spReadout"></div>
+    </div>
+
+    <div class="lawgrid">
+      <div class="lawcard"><b>Series</b><p>R_eq = R1 + R2 + … Current is the same through every resistor; voltage splits.</p></div>
+      <div class="lawcard"><b>Parallel</b><p>1/R_eq = 1/R1 + 1/R2 + … Voltage is the same across every resistor; current splits.</p></div>
+    </div>
+
+    <!-- ============ WIDGET 3 — RESISTIVITY ============ -->
+    <div class="widget">
+      <h3>3 · Resistivity — the shape of a wire matters</h3>
+      <p class="wsub">R = ρL/A. Stretch the wire longer or thinner and watch resistance respond — this is exactly why thin, long heating elements get hot.</p>
+      <div class="stage">
+        <svg id="rhoSvg" viewBox="0 0 640 180" width="100%" height="180"></svg>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label>Length L <span class="val" id="lenVal">40 cm</span></label>
+          <input type="range" id="len" min="10" max="80" value="40" step="2">
+        </div>
+        <div class="control">
+          <label>Thickness (diameter) <span class="val" id="diaVal">4 mm</span></label>
+          <input type="range" id="dia" min="1" max="10" value="4" step="0.5">
+        </div>
+      </div>
+      <div class="readout" id="rhoReadout"></div>
+    </div>
+
+    <div class="marker" style="font-family:var(--display); font-weight:600; font-size:1.15rem; margin:1.6rem 0 .8rem">Where this shows up outside the exam</div>
+    <div class="usegrid">
+      <div class="usecard">
+        <h4>Series wiring</h4>
+        <ul>
+          <li>Old-style decorative light strings — one bulb fails, the whole string goes dark</li>
+          <li>Ammeters are placed in series so all the current passes through them</li>
+          <li>Fuses are wired in series so they can break the whole circuit</li>
+        </ul>
+      </div>
+      <div class="usecard">
+        <h4>Parallel wiring</h4>
+        <ul>
+          <li>Household wiring — every appliance gets the full 220 V independently</li>
+          <li>Voltmeters are placed in parallel so they don't disturb the current</li>
+          <li>One appliance failing doesn't cut power to the rest of the house</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ QUIZ ============ -->
+    <div class="card" style="padding:1.7rem; margin-top:2rem">
+      <h2 style="font-size:1.4rem; margin-bottom:.3rem">Chapter quiz</h2>
+      <p style="color:var(--slate); font-size:.92rem">Five questions on what you just watched move.</p>
+      <div id="quiz" style="margin-top:1.4rem"></div>
+      <button class="btn btn--gold btn--block" id="check" style="margin-top:1.4rem">Check my answers</button>
+      <div id="result" class="score" hidden></div>
+    </div>
+
+    <div class="card" style="padding:1.8rem; margin-top:2rem; text-align:center">
+      <h3 style="margin-bottom:.5rem">Want this for the rest of the chapter?</h3>
+      <p style="color:var(--slate); font-size:.94rem; margin-bottom:1.2rem">EMF and internal resistance, Kirchhoff's laws, and the Wheatstone bridge — same live widgets.</p>
+      <a class="btn btn--wa btn--lg" data-wa="Hi NammaTutor, please send pricing for the full Class 12 Physics interactive notes.">Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="margin-top:0; border-top:0; padding-top:0">
+      <span>© <span data-year></span> NammaTutor · Sample material</span>
+      <span><a href="../resources.html">All study material</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/ui.js"></script>
+<script src="../assets/js/demo-electricity.js"></script>
+</body>
+</html>
