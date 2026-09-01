@@ -1,0 +1,55 @@
+NAMMATUTOR — WHAT'S IN THIS ZIP
+================================
+
+THREE VERSIONS OF THE SAME SITE. Pick by what you're doing.
+
+
+1. standalone/          <-- OPEN FILES FROM HERE
+   ---------------------------------------------------------------
+   Every .html file is completely self-contained: CSS, JavaScript
+   and the logo are all embedded inside the file itself.
+
+   Use this when you want to OPEN or SHARE a single page — double-
+   click it, email it to a parent, open it on your phone. It works
+   even if you move one file somewhere on its own.
+
+   (This is the fix for "dark mode isn't working": that happens
+   when HTML files get separated from the assets/ folder. These
+   files have no assets/ folder to lose.)
+
+
+2. dist/                <-- UPLOAD THIS TO YOUR WEBSITE
+   ---------------------------------------------------------------
+   The optimised build for nammatutor.in / GitHub Pages.
+   Shared CSS and JS are cached by the browser, so it's faster for
+   real visitors. Upload the CONTENTS of this folder.
+
+   IMPORTANT: keep the folder structure intact when uploading.
+
+
+3. Everything else      <-- EDIT HERE
+   ---------------------------------------------------------------
+   index.html, home-tuition-*.html etc.  the editable pages
+   assets/styles.css                     all design + dark mode
+   assets/js/config.js                   your phone + WhatsApp number
+   assets/js/*.js                        the rest of the behaviour
+   assets/brand/                         logo + favicons
+   samples/sources/                      HTML that generates the PDFs
+   build.py                              rebuilds dist/
+   build_standalone.py                   rebuilds standalone/
+   build_areas.py                        rebuilds the 12 area pages
+
+   After ANY edit, run:
+       python3 build.py
+       python3 build_standalone.py
+
+
+FIRST THREE THINGS TO DO
+========================
+1. assets/js/config.js  — check your WhatsApp number is right
+2. Deploy dist/, then submit each form once and click the
+   confirmation email FormSubmit sends you. Until you do that,
+   form submissions go nowhere.
+3. Find/replace nammatutor.in if your domain differs.
+
+Full detail is in README.md.

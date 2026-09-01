@@ -1,0 +1,79 @@
+NAMMATUTOR — GO-LIVE CHECKLIST
+==============================
+Domain purchased: nammatutor.in
+
+Work top to bottom. Steps 1-3 are blocking; the site is broken
+for real users until they are done.
+
+
+[ ] 1. UPLOAD
+      Upload the CONTENTS of dist/ to your host (not the folder itself).
+      GitHub Pages: push the repo, Settings > Pages > Source: main / root.
+      Keep the folder structure — assets/ must stay next to the .html files.
+
+[ ] 2. POINT THE DOMAIN
+      At your registrar, add these records:
+        A     @    185.199.108.153
+        A     @    185.199.109.153
+        A     @    185.199.110.153
+        A     @    185.199.111.153
+        CNAME www  <your-github-username>.github.io
+      The CNAME file in dist/ already says nammatutor.in.
+      Wait for DNS (up to 24h), then tick "Enforce HTTPS".
+
+[ ] 3. ACTIVATE THE FORMS   <-- MOST IMPORTANT
+      Until this is done, EVERY enquiry is silently lost.
+      a) Open https://nammatutor.in/hire-a-tutor.html and submit the form
+         with your own details.
+      b) FormSubmit emails meprabhatmishra007@gmail.com a confirmation
+         link. Click it.
+      c) Repeat for https://nammatutor.in/become-a-tutor.html
+         (it is a separate endpoint and needs its own confirmation).
+      d) Submit each once more and confirm both arrive in your inbox.
+
+[ ] 4. GMAIL FILTERS
+      Filter "New PARENT enquiry"  -> label: Leads (star it)
+      Filter "New TUTOR application" -> label: Tutors
+      Parent leads are time-sensitive; tutor CVs are not.
+
+[ ] 5. HIDE YOUR EMAIL FROM PAGE SOURCE (optional, do after step 3)
+      Log in at formsubmit.co, copy your hashed endpoint, and replace
+      formsubmit.co/meprabhatmishra007@gmail.com with
+      formsubmit.co/<your-hash> in all 5 form tags.
+
+[ ] 6. GOOGLE SEARCH CONSOLE
+      Add nammatutor.in, verify, submit:
+        https://nammatutor.in/sitemap.xml
+      19 URLs will be discovered.
+
+[ ] 7. GOOGLE BUSINESS PROFILE   <-- biggest ranking lever
+      Category: Tutoring service.
+      Set a SERVICE AREA (Bangalore), not a street address, if you
+      work from home. Add photos, hours, and the website link.
+      This is what puts you in the map pack for "home tuition near me".
+
+[ ] 8. READ THE LOCALITY COPY
+      The 12 home-tuition-*.html pages contain specific claims about
+      each neighbourhood that were written for you, not by you.
+      Read them once and correct anything that is not true of how you
+      actually operate. Edit the AREAS dict in build_areas.py, then run:
+          python3 build_areas.py && python3 build.py
+
+[ ] 9. CHECK THE FEE MESSAGING MATCHES REALITY
+      The site advertises Rs 99 one-time registration (shown against a
+      struck-out Rs 590), and "Free for tutors" on become-a-tutor.html.
+      Confirm you actually charge this before going live.
+
+[ ] 10. DIRECTORY LISTINGS
+      JustDial, Sulekha, UrbanPro, IndiaMART. Use the SAME name,
+      phone and address everywhere — inconsistency hurts local ranking.
+
+
+AFTER LAUNCH
+============
+- Ask every happy parent for a Google review. Review count and recency
+  drive local ranking more than anything on the page.
+- Add testimonials to the site once they are real. There are none now,
+  deliberately.
+- One blog post a fortnight answering what parents type into Google
+  beats ten thin pages.

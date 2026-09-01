@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+
+Sitemap: https://nammatutor.in/sitemap.xml
